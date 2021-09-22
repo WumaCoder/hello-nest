@@ -5,7 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserRepo } from './entities/user.entity';
 
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(private userRepo: UserRepo) {}
 
   async create(createUserDto: CreateUserDto) {
