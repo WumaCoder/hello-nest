@@ -17,6 +17,7 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
     "typeRoots": ["./node_modules/@types", "./types"],
     "paths": {
       "@/": ["./src/"]
@@ -30,7 +31,8 @@
     "libs/**/*.d.ts",
     "libs/**/*.ts",
     "types/**/*.d.ts",
-    "types/**/*.ts"
+    "types/**/*.ts",
+    "mikro-orm.config.ts"
   ],
   "ts-node": {
     "transpileOnly": false,

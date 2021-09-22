@@ -105,16 +105,12 @@
     "roots": [
       "<rootDir>/src/",
       "<rootDir>/libs/"
-    ],
-    "moduleNameMapper": {
-      "^@api-sdk/api-sdk(|/.*)$": "<rootDir>/libs/api-sdk/src/$1"
-    }
+    ]
   },
   "mikro-orm": {
     "useTsNode": true,
     "configPaths": [
-      "./src/mikro-orm.config.ts",
-      "./dist/mikro-orm.config.js"
+      "./mikro-orm.config.ts"
     ]
   }
 }
