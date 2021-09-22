@@ -1,3 +1,4 @@
+import { wrap } from '@mikro-orm/core';
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -8,16 +9,11 @@ export class UsersService {
   constructor(private userRepo: UserRepo) {}
 
   async create(createUserDto: CreateUserDto) {
-    const user = new User();
-    user.name = 'admin';
-    user.username = 'admin';
-    user.password = '123456';
-    await this.userRepo.flush();
-    return user;
+    return await this.userRepo.save(createUserDto);
   }
 
   findAll() {
-    return `This action returns all users`;
+    return this.userRepo.findAll();
   }
 
   findOne(id: number) {
