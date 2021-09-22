@@ -18,9 +18,20 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
+    ],
     "paths": {
-      "@/": ["./src/"]
+      "@/": [
+        "./src/"
+      ],
+      "@app/shared": [
+        "libs/shared/src"
+      ],
+      "@app/shared/*": [
+        "libs/shared/src/*"
+      ]
     }
   },
   "include": [
@@ -34,13 +45,17 @@
     "types/**/*.ts",
     "mikro-orm.config.ts"
   ],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "ts-node": {
     "transpileOnly": false,
     "files": true,
     "cwd": "./",
     "projectSearchDir": "./",
     "project": "./tsconfig.json",
-    "require": ["tsconfig-paths/register"]
+    "require": [
+      "tsconfig-paths/register"
+    ]
   }
 }

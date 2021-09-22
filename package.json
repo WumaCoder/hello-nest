@@ -105,7 +105,10 @@
     "roots": [
       "<rootDir>/src/",
       "<rootDir>/libs/"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^@app/shared(|/.*)$": "<rootDir>/libs/shared/src/$1"
+    }
   },
   "mikro-orm": {
     "useTsNode": true,

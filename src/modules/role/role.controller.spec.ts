@@ -17,4 +17,13 @@ describe('RoleController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  it('sum a+b', () => {
+    const s = sum(1, 3);
+    expect(s === 4).toBe(true);
+  });
 });
+
+function sum(a: number, b: number) {
+  return a + b;
+}

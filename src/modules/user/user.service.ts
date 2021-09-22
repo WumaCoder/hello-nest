@@ -1,8 +1,10 @@
-import { wrap } from '@mikro-orm/core';
-import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserRepo } from './entities/user.entity';
+import { LoginDto } from './dto/login.dto';
+import { ack } from '@app/shared';
+import { LoginException } from './exception/login.exception';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
@@ -16,15 +18,28 @@ export class UserService {
     return this.userRepo.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(id: string) {
+    return this.userRepo.findOneOrFail({ id });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    return this.userRepo.update(id, updateUserDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  remove(id: string) {
+    return this.userRepo.nativeDelete({ id });
+  }
+
+  async login(loginDto: LoginDto) {
+    const user = await this.userRepo.findOne({
+      username: loginDto.username,
+      password: loginDto.password,
+    });
+
+    if (!user) {
+      throw new LoginException();
+    }
+
+    return user;
   }
 }
