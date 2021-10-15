@@ -2,6 +2,12 @@ import './boot/env';
 import hmr from './boot/hmr';
 import swagger from './boot/swagger';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
+import {
+  PATH_METADATA,
+  METHOD_METADATA,
+  ROUTE_ARGS_METADATA,
+} from '@nestjs/common/constants';
+import { RouteParamtypes } from '@nestjs/common/enums/route-paramtypes.enum';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import config from './config';
@@ -21,7 +27,7 @@ async function bootstrap() {
   hmr(app);
 
   const port = config().port;
-  await app.listen(port, () => {
+  await app.listen(port, async () => {
     console.log(`runtime: listen ${port}, env ${env()}`);
   });
 }
