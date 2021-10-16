@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { UserService } from '../user/user.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 
 @Injectable()
 export class RoleService {
+  constructor(private userService: UserService) {}
+
   create(createRoleDto: CreateRoleDto) {
     return 'This action adds a new role';
   }
 
   findAll() {
-    return `This action returns all role`;
+    return this.userService.findAll();
   }
 
   findOne(id: number) {
